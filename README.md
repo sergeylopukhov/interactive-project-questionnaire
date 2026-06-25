@@ -100,7 +100,7 @@ git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questi
 Или вызвать через `$`:
 
 ```text
-Use $interactive-project-questionnaire to collect requirements for this project.
+Используй $interactive-project-questionnaire, чтобы собрать требования к проекту.
 ```
 
 ### Проверка
