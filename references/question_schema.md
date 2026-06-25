@@ -12,7 +12,7 @@ Save questionnaire definitions as a UTF-8 JSON object, usually:
 - `description` string, optional: One-paragraph explanation shown at the top of the form.
 - `language` string, optional: Built-in UI language. Supported values: `en`, `ru`. Defaults to `en`.
 - `ui` object, optional: Overrides for built-in UI labels. Keys must match the supported UI keys listed below.
-- `project_context` string, object, or array, optional: Brief context the agent used to build the questionnaire.
+- `project_context` string, object, or array, optional: Internal context the agent used to build the questionnaire. It is saved in answer files for the agent, but is not shown in the browser form.
 - `questions` array, required: One or more question objects.
 - `metadata` object, optional: Non-user-facing data for the agent.
 

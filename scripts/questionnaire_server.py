@@ -1890,12 +1890,8 @@ HTML_TEMPLATE = """<!doctype html>
     function renderForm() {
       title.textContent = questionnaire.title;
       description.textContent = questionnaire.description || "";
-      if (questionnaire.project_context) {
-        context.hidden = false;
-        context.textContent = typeof questionnaire.project_context === "string"
-          ? questionnaire.project_context
-          : JSON.stringify(questionnaire.project_context, null, 2);
-      }
+      context.hidden = true;
+      context.textContent = "";
 
       form.textContent = "";
       for (const question of questionnaire.questions) {

@@ -180,6 +180,11 @@ def main() -> int:
                 raise AssertionError("empty other_text unexpectedly passed validation")
 
             html = server.build_html(loaded)
+            assert_true(
+                "JSON.stringify(questionnaire.project_context" not in html,
+                "project_context should not be rendered as visible raw JSON in the form",
+            )
+            assert_true('context.textContent = "";' in html, "project_context display should be cleared in the form")
             for expected in (
                 "Сохранить ответы",
                 "Очистить локальный черновик",
