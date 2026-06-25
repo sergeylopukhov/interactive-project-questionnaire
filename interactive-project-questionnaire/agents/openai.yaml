@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interactive Project Questionnaire"
+  short_description: "Collect project decisions in a local form"
+  default_prompt: "Use $interactive-project-questionnaire to collect requirements through a local clickable questionnaire."
