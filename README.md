@@ -1,219 +1,99 @@
+<div align="center">
+
+![Interactive Project Questionnaire](assets/interactive-project-questionnaire-hero.png)
+
 # Interactive Project Questionnaire
 
-![Interactive Project Questionnaire hero](assets/interactive-project-questionnaire-hero.png)
+**Codex skill for local clickable project questionnaires.**  
+**Скилл Codex для локальных кликабельных анкет по проекту.**
 
-Collect project decisions through a local clickable form instead of a long chat questionnaire.
+[Русский](#русский) · [English](#english)
 
-**English description:** Interactive Project Questionnaire is a dependency-free Codex skill for AI agents that need to gather requirements, clarify project scope, and turn planning questions into a local form with saved JSON and Markdown answers.
+</div>
 
-**Описание на русском:** Interactive Project Questionnaire — скилл для Codex и других AI-агентов, который собирает требования через локальную анкету. Пользователь выбирает варианты, добавляет свои ответы и комментарии, а агент получает структурированные файлы для дальнейшей работы.
+---
 
-## What It Does
+## Русский
 
-- Replaces long numbered question lists with a browser-based local form.
-- Saves answers as `answers.json` and `answers.md`.
-- Supports English and Russian UI labels.
-- Supports custom "Other" answers and "Not sure / recommend for me" choices.
-- Adds a comment field to every question.
-- Handles required questions, recommendations, scale inputs, and simple conditional follow-ups.
-- Runs only on `127.0.0.1` and uses no external dependencies.
+Этот скилл помогает Codex не задавать длинный список вопросов в чате. Вместо этого Codex запускает локальную анкету в браузере, пользователь выбирает варианты и добавляет комментарии, а ответы сохраняются в `answers.json` и `answers.md`.
 
-## Why Use It
-
-Agents often need project decisions before they can build well. Chat-based questionnaires are hard to answer and easy to misread. This skill turns those decisions into a compact local form, then gives the agent clean files to continue from.
-
-Good fit for:
-
-- product briefs
-- feature scoping
-- landing page requirements
-- design direction choices
-- automation specs
-- bot and dashboard requirements
-- implementation planning
-
-## Repository Layout
-
-```text
-interactive-project-questionnaire/
-  SKILL.md
-  agents/openai.yaml
-  scripts/questionnaire_server.py
-  scripts/smoke_test.py
-  references/question_schema.md
-  references/usage_examples.md
-assets/
-  interactive-project-questionnaire-hero.png
-```
-
-## Install For Codex
-
-Copy the skill folder into your Codex skills directory:
+### Установка
 
 ```bash
-cp -R interactive-project-questionnaire ~/.codex/skills/
+git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questionnaire.git ~/.codex/skills/interactive-project-questionnaire
 ```
 
-Then ask Codex to use it:
+### Использование
 
 ```text
 Use $interactive-project-questionnaire to collect requirements for this project.
 ```
 
-## Use Without Installing
-
-You can also run the bundled server directly:
-
-```bash
-python3 interactive-project-questionnaire/scripts/questionnaire_server.py --port 0
-```
-
-Open the printed local URL:
+На русском:
 
 ```text
-http://127.0.0.1:<port>/
+Используй $interactive-project-questionnaire и собери требования к проекту через локальную анкету.
 ```
 
-## Typical Agent Flow
-
-1. Create `.project-questionnaire/questions.json`.
-2. Validate the questionnaire.
-3. Start the local server.
-4. Give the user the local URL.
-5. Wait until the user saves the form.
-6. Read `.project-questionnaire/answers.md` and `.project-questionnaire/answers.json`.
-7. Summarize the decisions and continue the task.
-
-## Quick Start
-
-Validate a questionnaire:
+### Проверка
 
 ```bash
-python3 interactive-project-questionnaire/scripts/questionnaire_server.py \
-  --input .project-questionnaire/questions.json \
-  --validate-only
+python3 ~/.codex/skills/interactive-project-questionnaire/scripts/smoke_test.py
 ```
 
-Run the local form:
+### Что делает
+
+- запускает форму только на `127.0.0.1`;
+- сохраняет ответы в JSON и Markdown;
+- поддерживает русский и английский интерфейс;
+- добавляет «Другое / свой вариант» и «Не уверен / порекомендуй сам»;
+- сохраняет комментарии к каждому вопросу;
+- не требует npm, pip, Flask, FastAPI или внешних сервисов.
+
+### Где смотреть формат анкеты
+
+- [`references/question_schema.md`](references/question_schema.md) — схема `questions.json`;
+- [`references/usage_examples.md`](references/usage_examples.md) — примеры запросов и сценариев.
+
+---
+
+## English
+
+This Codex skill replaces long chat-based question lists with a local browser questionnaire. The user selects options, adds comments, and the answers are saved as `answers.json` and `answers.md`.
+
+### Install
 
 ```bash
-python3 interactive-project-questionnaire/scripts/questionnaire_server.py \
-  --input .project-questionnaire/questions.json \
-  --out-dir .project-questionnaire \
-  --port 0
+git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questionnaire.git ~/.codex/skills/interactive-project-questionnaire
 ```
 
-Run smoke tests:
-
-```bash
-python3 interactive-project-questionnaire/scripts/smoke_test.py
-```
-
-Print the built-in demo questionnaire:
-
-```bash
-python3 interactive-project-questionnaire/scripts/questionnaire_server.py --print-demo
-```
-
-## Minimal Questionnaire
-
-```json
-{
-  "title": "Project Brief",
-  "description": "Choose the direction so the agent can continue with less back-and-forth.",
-  "language": "en",
-  "questions": [
-    {
-      "id": "goal",
-      "title": "What should this project optimize for first?",
-      "type": "single_choice",
-      "required": true,
-      "recommended": "mvp",
-      "allow_other": true,
-      "allow_recommend": true,
-      "options": [
-        {
-          "value": "mvp",
-          "label": "Fast MVP"
-        },
-        {
-          "value": "polished_v1",
-          "label": "Polished first version"
-        }
-      ]
-    }
-  ]
-}
-```
-
-## Russian UI
-
-Set `language` to `ru`:
-
-```json
-{
-  "title": "Бриф проекта",
-  "description": "Выберите направление, чтобы агент продолжил работу без длинной переписки.",
-  "language": "ru",
-  "questions": [
-    {
-      "id": "goal",
-      "title": "Какой результат важнее всего?",
-      "type": "single_choice",
-      "required": true,
-      "allow_other": true,
-      "allow_recommend": true,
-      "options": [
-        {
-          "value": "mvp",
-          "label": "Быстрый MVP"
-        },
-        {
-          "value": "polished_v1",
-          "label": "Аккуратная первая версия"
-        }
-      ]
-    }
-  ]
-}
-```
-
-## Output Files
-
-After the user saves the form, the server writes:
+### Use
 
 ```text
-.project-questionnaire/answers.json
-.project-questionnaire/answers.md
+Use $interactive-project-questionnaire to collect requirements for this project.
 ```
 
-Existing answer files are backed up before new ones are written.
-
-## Cleanup
-
-Cleanup is explicit because the agent needs to read the saved answers:
+### Check
 
 ```bash
-python3 interactive-project-questionnaire/scripts/questionnaire_server.py \
-  --out-dir .project-questionnaire \
-  --cleanup
+python3 ~/.codex/skills/interactive-project-questionnaire/scripts/smoke_test.py
 ```
 
-The cleanup command removes generated questionnaire files and keeps `.project-questionnaire/.gitignore`.
+### Features
 
-## Suggested GitHub Descriptions
+- runs only on `127.0.0.1`;
+- saves answers as JSON and Markdown;
+- supports English and Russian UI labels;
+- supports "Other" and "Not sure / recommend for me" choices;
+- saves per-question comments;
+- requires no npm, pip, Flask, FastAPI, or external service.
 
-English:
+### Format
 
-```text
-Collect AI project requirements through a local clickable questionnaire with JSON and Markdown outputs.
-```
+- [`references/question_schema.md`](references/question_schema.md) — `questions.json` schema;
+- [`references/usage_examples.md`](references/usage_examples.md) — prompts and usage examples.
 
-Русский:
-
-```text
-Локальная анкета для AI-агентов: собирает требования к проекту и сохраняет ответы в JSON и Markdown.
-```
+---
 
 ## License
 
