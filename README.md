@@ -25,14 +25,16 @@ git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questi
 
 ### Использование
 
+Можно просто сказать Codex:
+
 ```text
-Use $interactive-project-questionnaire to collect requirements for this project.
+Используй interactive-project-questionnaire, чтобы задать мне вопросы по проекту.
 ```
 
-На русском:
+Или явно вызвать скилл:
 
 ```text
-Используй $interactive-project-questionnaire и собери требования к проекту через локальную анкету.
+Use $interactive-project-questionnaire to collect requirements for this project.
 ```
 
 ### Проверка
@@ -68,6 +70,14 @@ git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questi
 ```
 
 ### Use
+
+You can simply tell Codex:
+
+```text
+Use interactive-project-questionnaire when you need to ask me project questions.
+```
+
+Or invoke the skill explicitly:
 
 ```text
 Use $interactive-project-questionnaire to collect requirements for this project.

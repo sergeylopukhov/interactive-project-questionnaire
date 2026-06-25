@@ -3,6 +3,14 @@
 Use these prompts when an agent should collect project decisions through a clickable local questionnaire.
 
 ```text
+Use interactive-project-questionnaire when you need to ask me project questions.
+```
+
+```text
+Используй interactive-project-questionnaire, чтобы задать мне вопросы по проекту.
+```
+
+```text
 Use $interactive-project-questionnaire to collect requirements for this landing page project.
 ```
 
