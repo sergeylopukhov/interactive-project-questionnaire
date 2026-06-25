@@ -2,6 +2,26 @@
 
 Use these prompts when an agent should collect project decisions through a clickable local questionnaire.
 
+These examples should trigger the skill even without naming it:
+
+```text
+Ask me questions before implementation.
+```
+
+```text
+Collect requirements before you build.
+```
+
+```text
+Сначала задай мне вопросы по проекту.
+```
+
+```text
+Собери требования перед реализацией.
+```
+
+Explicit skill-name examples:
+
 ```text
 Use interactive-project-questionnaire when you need to ask me project questions.
 ```

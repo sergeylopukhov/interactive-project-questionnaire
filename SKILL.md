@@ -1,6 +1,7 @@
 ---
 name: interactive-project-questionnaire
-description: Use this when an AI agent should collect project requirements, implementation choices, product or design brief details, or multiple-choice planning decisions through a local clickable questionnaire instead of a long chat question list. Supports local answer capture, custom "other" answers, recommendation requests, per-question comments, conditional questions, and saved JSON/Markdown outputs.
+description: >-
+  Automatically use this when an AI agent should ask questions before implementation, collect project requirements, clarify a product or feature, prepare a brief, gather a landing page or UI/UX brief, choose between answer options, or interview the user through a local clickable questionnaire instead of a long chat question list. Trigger on requests like "ask me questions first", "collect requirements", "prepare a brief", "clarify the project", "help me choose options", and Russian phrases such as "задай вопросы по проекту", "собери требования", "подготовь бриф", "уточни детали", "сначала спроси", "дай варианты ответов", "хочу выбрать варианты", "опроси меня перед реализацией". Supports saved JSON/Markdown answers, custom "other" answers, recommendation requests, comments, and conditional questions.
 ---
 
 # Interactive Project Questionnaire

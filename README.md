@@ -25,13 +25,23 @@ git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questi
 
 ### Использование
 
-Можно просто сказать Codex:
+После установки Codex может выбрать скилл сам, если запрос похож на сбор требований:
+
+```text
+Сначала задай мне вопросы по проекту.
+```
+
+```text
+Собери требования перед реализацией.
+```
+
+Можно указать имя скилла напрямую:
 
 ```text
 Используй interactive-project-questionnaire, чтобы задать мне вопросы по проекту.
 ```
 
-Или явно вызвать скилл:
+Или вызвать через `$`:
 
 ```text
 Use $interactive-project-questionnaire to collect requirements for this project.
@@ -71,7 +81,17 @@ git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questi
 
 ### Use
 
-You can simply tell Codex:
+After installation, Codex can pick this skill automatically when the request looks like requirements gathering:
+
+```text
+Ask me questions before implementation.
+```
+
+```text
+Collect requirements before you build.
+```
+
+You can also mention the skill name directly:
 
 ```text
 Use interactive-project-questionnaire when you need to ask me project questions.
