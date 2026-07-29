@@ -6,7 +6,7 @@ description: >-
 
 # Interactive Project Questionnaire
 
-Use this portable Agent Skill to replace long chat-based planning prompts with a local clickable questionnaire. It follows the open Agent Skills directory format and does not depend on features specific to Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, Cursor, Codex, Hermes, or another compatible client. The goal is to let a user choose options, add custom answers and comments, save the result locally, then let the agent continue from the saved decisions.
+Use this portable Agent Skill to replace long chat-based planning prompts with a local clickable questionnaire. It follows the open Agent Skills directory format and does not depend on features specific to OpenCode, Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, Cursor, Codex, Hermes, or another compatible client. The goal is to let a user choose options, add custom answers and comments, save the result locally, then let the agent continue from the saved decisions.
 
 ## Core Rules
 
