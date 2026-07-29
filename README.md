@@ -1,31 +1,101 @@
-<div align="center">
+<p align="center">
+  <img src="assets/interactive-project-questionnaire-hero.png" alt="Interactive Project Questionnaire" width="100%">
+</p>
 
-![Interactive Project Questionnaire](assets/interactive-project-questionnaire-hero.png)
+<h1 align="center">Interactive Project Questionnaire</h1>
 
-# Interactive Project Questionnaire
+<p align="center">
+  Portable Agent Skill for local clickable project questionnaires.<br>
+  Универсальный Agent Skill для локальных кликабельных анкет по проекту.
+</p>
 
-**Codex skill for local clickable project questionnaires.**  
-**Скилл Codex для локальных кликабельных анкет по проекту.**
+<p align="center">
+  <a href="https://agentskills.io/"><img src="https://img.shields.io/badge/Agent_Skills-open_standard-1f6feb" alt="Agent Skills open standard"></a>
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/network-127.0.0.1-0b8f60" alt="Localhost only">
+  <img src="https://img.shields.io/badge/dependencies-zero-6b7280" alt="No external dependencies">
+</p>
 
-[English](#english) · [Русский](#русский)
-
-</div>
+<p align="center">
+  <a href="#english">English</a> · <a href="#русский">Русский</a>
+</p>
 
 ---
 
 ## English
 
-This Codex skill replaces long chat-based question lists with a local browser questionnaire. The user selects options, adds comments, and the answers are saved as `answers.json` and `answers.md`.
+Long requirement interviews are awkward in chat. This [Agent Skills](https://agentskills.io/) package opens a local browser form instead, then saves the answers for the agent to use.
 
-### Install
+The installer includes paths for Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, Cursor, Codex, and Hermes Agent. It can also install to `~/.agents/skills/` or any directory passed with `--target`.
+
+> [!NOTE]
+> The five primary clients are Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, and Cursor. The installer detects them automatically and verifies the installed copy.
+
+### How it works
+
+1. The agent turns unresolved project decisions into a local questionnaire.
+2. The user selects options, adds custom answers or comments, and saves the form.
+3. The skill writes `answers.json` and `answers.md`.
+4. The agent reads the saved decisions and continues the original task.
+
+### Quick start
+
+Send the repository URL to your coding agent:
+
+```text
+Install this skill for yourself and verify that it works:
+https://github.com/sergeylopukhov/interactive-project-questionnaire
+```
+
+> [!TIP]
+> Agent instructions: clone the repository to a temporary directory and inspect `SKILL.md`. Run `python3 scripts/install_skill.py --agent auto`. The command copies the package and runs the smoke test from the installed location. If detection fails, find the client's global Agent Skills directory and pass it with `--target`.
+
+<details>
+<summary><strong>Manual installation and agent presets</strong></summary>
 
 ```bash
-git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questionnaire.git ~/.codex/skills/interactive-project-questionnaire
+git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questionnaire.git
+cd interactive-project-questionnaire
+python3 scripts/install_skill.py --agent auto
 ```
+
+Choose another agent or install for several:
+
+```bash
+python3 scripts/install_skill.py --agent claude
+python3 scripts/install_skill.py --agent gemini
+python3 scripts/install_skill.py --agent qwen
+python3 scripts/install_skill.py --agent kimi
+python3 scripts/install_skill.py --agent cursor
+python3 scripts/install_skill.py --agent all
+```
+
+For any other Agent Skills client, pass its global skills directory:
+
+```bash
+python3 scripts/install_skill.py --target /path/to/agent/skills
+```
+
+Presets install to:
+
+| Preset | Global directory |
+| --- | --- |
+| `codex` | `${CODEX_HOME:-~/.codex}/skills/` |
+| `claude` | `~/.claude/skills/` |
+| `gemini` | `~/.gemini/skills/` |
+| `qwen` | `~/.qwen/skills/` |
+| `kimi` | `${KIMI_CODE_HOME:-~/.kimi-code}/skills/` |
+| `cursor` | `~/.cursor/skills/` |
+| `hermes` | `~/.hermes/skills/` |
+| `agents` | `~/.agents/skills/` |
+
+Existing installations are preserved unless `--force` is passed. Forced updates create a dated backup first.
+
+</details>
 
 ### Use
 
-After installation, Codex can pick this skill automatically when the request looks like requirements gathering:
+After installation, a compatible agent can pick this skill automatically when the request looks like requirements gathering:
 
 ```text
 Ask me questions before implementation.
@@ -50,7 +120,7 @@ Use $interactive-project-questionnaire to collect requirements for this project.
 ### Check
 
 ```bash
-python3 ~/.codex/skills/interactive-project-questionnaire/scripts/smoke_test.py
+python3 scripts/smoke_test.py
 ```
 
 ### Features
@@ -62,26 +132,90 @@ python3 ~/.codex/skills/interactive-project-questionnaire/scripts/smoke_test.py
 - saves per-question comments;
 - requires no npm, pip, Flask, FastAPI, or external service.
 
-### Format
+### Documentation
 
-- [`references/question_schema.md`](references/question_schema.md) — `questions.json` schema;
-- [`references/usage_examples.md`](references/usage_examples.md) — prompts and usage examples.
+| Document | Contents |
+| --- | --- |
+| [`references/question_schema.md`](references/question_schema.md) | `questions.json` schema |
+| [`references/usage_examples.md`](references/usage_examples.md) | Prompts and usage examples |
+| [`SKILL.md`](SKILL.md) | Agent workflow and operating rules |
 
 ---
 
 ## Русский
 
-Этот скилл помогает Codex не задавать длинный список вопросов в чате. Вместо этого Codex запускает локальную анкету в браузере, пользователь выбирает варианты и добавляет комментарии, а ответы сохраняются в `answers.json` и `answers.md`.
+Длинный опрос по проекту неудобно проводить в чате. Скилл открывает локальную анкету в браузере, сохраняет ответы и возвращает их агенту.
 
-### Установка
+В установщике есть готовые пути для Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, Cursor, Codex и Hermes Agent. Для других клиентов можно выбрать `~/.agents/skills/` или передать нужный каталог через `--target`.
+
+> [!NOTE]
+> Основные клиенты: Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI и Cursor. Установщик определяет их автоматически и проверяет установленную копию.
+
+### Как это работает
+
+1. Агент собирает нерешённые вопросы по проекту в локальную анкету.
+2. Пользователь выбирает варианты, добавляет свои ответы или комментарии и сохраняет форму.
+3. Скилл записывает результат в `answers.json` и `answers.md`.
+4. Агент читает сохранённые решения и продолжает исходную задачу.
+
+### Быстрый старт
+
+Отправьте агенту ссылку на репозиторий:
+
+```text
+Установи этот скилл для себя и проверь, что он работает:
+https://github.com/sergeylopukhov/interactive-project-questionnaire
+```
+
+> [!TIP]
+> Инструкция для агента: клонируйте репозиторий во временную папку и проверьте `SKILL.md`. Выполните `python3 scripts/install_skill.py --agent auto`. Команда скопирует пакет и запустит smoke-тест из установленной папки. Если автоматическое определение не сработало, найдите глобальный каталог Agent Skills своего клиента и передайте путь через `--target`.
+
+<details>
+<summary><strong>Ручная установка и профили агентов</strong></summary>
 
 ```bash
-git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questionnaire.git ~/.codex/skills/interactive-project-questionnaire
+git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questionnaire.git
+cd interactive-project-questionnaire
+python3 scripts/install_skill.py --agent auto
 ```
+
+Для другого агента или сразу нескольких:
+
+```bash
+python3 scripts/install_skill.py --agent claude
+python3 scripts/install_skill.py --agent gemini
+python3 scripts/install_skill.py --agent qwen
+python3 scripts/install_skill.py --agent kimi
+python3 scripts/install_skill.py --agent cursor
+python3 scripts/install_skill.py --agent all
+```
+
+Для любого другого клиента Agent Skills укажите его каталог:
+
+```bash
+python3 scripts/install_skill.py --target /путь/к/каталогу/skills
+```
+
+Готовые профили:
+
+| Профиль | Глобальный каталог |
+| --- | --- |
+| `codex` | `${CODEX_HOME:-~/.codex}/skills/` |
+| `claude` | `~/.claude/skills/` |
+| `gemini` | `~/.gemini/skills/` |
+| `qwen` | `~/.qwen/skills/` |
+| `kimi` | `${KIMI_CODE_HOME:-~/.kimi-code}/skills/` |
+| `cursor` | `~/.cursor/skills/` |
+| `hermes` | `~/.hermes/skills/` |
+| `agents` | `~/.agents/skills/` |
+
+Установщик не перезаписывает существующую копию без `--force`. При принудительном обновлении он сначала создаёт резервную копию с датой.
+
+</details>
 
 ### Использование
 
-После установки Codex может выбрать скилл сам, если запрос похож на сбор требований:
+После установки агент сам выберет скилл, когда запрос потребует собрать требования:
 
 ```text
 Сначала задай мне вопросы по проекту.
@@ -106,7 +240,7 @@ git clone --depth 1 https://github.com/sergeylopukhov/interactive-project-questi
 ### Проверка
 
 ```bash
-python3 ~/.codex/skills/interactive-project-questionnaire/scripts/smoke_test.py
+python3 scripts/smoke_test.py
 ```
 
 ### Что делает
@@ -118,10 +252,13 @@ python3 ~/.codex/skills/interactive-project-questionnaire/scripts/smoke_test.py
 - сохраняет комментарии к каждому вопросу;
 - не требует npm, pip, Flask, FastAPI или внешних сервисов.
 
-### Где смотреть формат анкеты
+### Документация
 
-- [`references/question_schema.md`](references/question_schema.md) — схема `questions.json`;
-- [`references/usage_examples.md`](references/usage_examples.md) — примеры запросов и сценариев.
+| Документ | Содержание |
+| --- | --- |
+| [`references/question_schema.md`](references/question_schema.md) | Схема `questions.json` |
+| [`references/usage_examples.md`](references/usage_examples.md) | Примеры запросов и сценариев |
+| [`SKILL.md`](SKILL.md) | Порядок работы и правила для агента |
 
 ---
 

@@ -6,11 +6,12 @@ description: >-
 
 # Interactive Project Questionnaire
 
-Use this skill to replace long chat-based planning prompts with a local clickable questionnaire. The goal is to let a user choose options, add custom answers and comments, save the result locally, then let the agent continue from the saved decisions.
+Use this portable Agent Skill to replace long chat-based planning prompts with a local clickable questionnaire. It follows the open Agent Skills directory format and does not depend on features specific to Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, Cursor, Codex, Hermes, or another compatible client. The goal is to let a user choose options, add custom answers and comments, save the result locally, then let the agent continue from the saved decisions.
 
 ## Core Rules
 
 - Use `scripts/questionnaire_server.py`; do not hand-build a one-off HTML form.
+- Resolve `<skill-dir>` as the directory containing this `SKILL.md`. Use the absolute skill-directory path exposed by the current agent when available.
 - Bind only to `127.0.0.1`.
 - Do not use external dependencies, package managers, CDNs, internet access, Flask, FastAPI, npm, or pip.
 - Keep questions practical and decision-oriented.
