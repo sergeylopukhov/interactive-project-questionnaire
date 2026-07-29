@@ -22,6 +22,7 @@ AGENT_CHOICES = (
     "gemini",
     "hermes",
     "kimi",
+    "opencode",
     "qwen",
 )
 AGENT_COMMANDS = {
@@ -31,6 +32,7 @@ AGENT_COMMANDS = {
     "gemini": ("gemini",),
     "hermes": ("hermes",),
     "kimi": ("kimi",),
+    "opencode": ("opencode",),
     "qwen": ("qwen",),
 }
 AGENT_ENV_MARKERS = {
@@ -62,6 +64,9 @@ def agent_skill_root(agent: str, home: Path) -> Path:
         "gemini": home / ".gemini" / "skills",
         "hermes": home / ".hermes" / "skills",
         "kimi": Path(os.environ.get("KIMI_CODE_HOME", home / ".kimi-code")) / "skills",
+        "opencode": Path(os.environ.get("XDG_CONFIG_HOME", home / ".config"))
+        / "opencode"
+        / "skills",
         "qwen": home / ".qwen" / "skills",
     }
     return roots[agent].expanduser()

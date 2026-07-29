@@ -26,10 +26,10 @@
 
 Long requirement interviews are awkward in chat. This [Agent Skills](https://agentskills.io/) package opens a local browser form instead, then saves the answers for the agent to use.
 
-The installer includes paths for Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, Cursor, Codex, and Hermes Agent. It can also install to `~/.agents/skills/` or any directory passed with `--target`.
+The installer includes paths for OpenCode, Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, Cursor, Codex, and Hermes Agent. It can also install to `~/.agents/skills/` or any directory passed with `--target`.
 
 > [!NOTE]
-> The five primary clients are Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, and Cursor. The installer detects them automatically and verifies the installed copy.
+> OpenCode, Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, and Cursor are supported directly. The installer detects them automatically and verifies the installed copy.
 
 ### How it works
 
@@ -63,6 +63,7 @@ Choose another agent or install for several:
 
 ```bash
 python3 scripts/install_skill.py --agent claude
+python3 scripts/install_skill.py --agent opencode
 python3 scripts/install_skill.py --agent gemini
 python3 scripts/install_skill.py --agent qwen
 python3 scripts/install_skill.py --agent kimi
@@ -82,6 +83,7 @@ Presets install to:
 | --- | --- |
 | `codex` | `${CODEX_HOME:-~/.codex}/skills/` |
 | `claude` | `~/.claude/skills/` |
+| `opencode` | `${XDG_CONFIG_HOME:-~/.config}/opencode/skills/` |
 | `gemini` | `~/.gemini/skills/` |
 | `qwen` | `~/.qwen/skills/` |
 | `kimi` | `${KIMI_CODE_HOME:-~/.kimi-code}/skills/` |
@@ -146,10 +148,10 @@ python3 scripts/smoke_test.py
 
 Длинный опрос по проекту неудобно проводить в чате. Скилл открывает локальную анкету в браузере, сохраняет ответы и возвращает их агенту.
 
-В установщике есть готовые пути для Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, Cursor, Codex и Hermes Agent. Для других клиентов можно выбрать `~/.agents/skills/` или передать нужный каталог через `--target`.
+В установщике есть готовые пути для OpenCode, Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI, Cursor, Codex и Hermes Agent. Для других клиентов можно выбрать `~/.agents/skills/` или передать нужный каталог через `--target`.
 
 > [!NOTE]
-> Основные клиенты: Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI и Cursor. Установщик определяет их автоматически и проверяет установленную копию.
+> OpenCode, Claude Code, Gemini CLI, Qwen Code, Kimi Code CLI и Cursor поддерживаются напрямую. Установщик определяет их автоматически и проверяет установленную копию.
 
 ### Как это работает
 
@@ -183,6 +185,7 @@ python3 scripts/install_skill.py --agent auto
 
 ```bash
 python3 scripts/install_skill.py --agent claude
+python3 scripts/install_skill.py --agent opencode
 python3 scripts/install_skill.py --agent gemini
 python3 scripts/install_skill.py --agent qwen
 python3 scripts/install_skill.py --agent kimi
@@ -202,6 +205,7 @@ python3 scripts/install_skill.py --target /путь/к/каталогу/skills
 | --- | --- |
 | `codex` | `${CODEX_HOME:-~/.codex}/skills/` |
 | `claude` | `~/.claude/skills/` |
+| `opencode` | `${XDG_CONFIG_HOME:-~/.config}/opencode/skills/` |
 | `gemini` | `~/.gemini/skills/` |
 | `qwen` | `~/.qwen/skills/` |
 | `kimi` | `${KIMI_CODE_HOME:-~/.kimi-code}/skills/` |
